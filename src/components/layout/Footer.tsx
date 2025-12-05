@@ -88,6 +88,14 @@ const Footer = () => {
           <p className="text-body-sm text-muted-foreground">
             © {new Date().getFullYear()} Boulevard 1909. Bütün hüquqlar qorunur.
           </p>
+          <a
+            href="https://wa.me/994505131380?text=Salam,%20veb%20saytlarla%20maraqlaniram"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center justify-center text-body-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+          >
+            Created by <span className="ml-2 font-heading tracking-[0.25em] text-primary">REVİO.AZ</span>
+          </a>
         </div>
       </div>
     </footer>
