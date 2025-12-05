@@ -4,12 +4,9 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { useToast } from "@/hooks/use-toast";
 import { Check } from "lucide-react";
 
-const timeSlots = [
-  "12:00", "12:30", "13:00", "13:30", "14:00", "14:30",
-  "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30"
-];
-
 const guestOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10+"];
+
+const whatsappNumber = "994101001909";
 
 const Reservation = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,7 +38,21 @@ const Reservation = () => {
       return;
     }
 
-    // Simulate submission
+    const message = [
+      "Boulevard 1909 rezervasiya sorğusu:",
+      `Ad: ${formData.name}`,
+      `Telefon: ${formData.phone}`,
+      `Tarix: ${formData.date}`,
+      `Saat: ${formData.time}`,
+      `Şəxs sayı: ${formData.guests}`,
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    if (typeof window !== "undefined") {
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    }
+
     setIsSubmitted(true);
     toast({
       title: "Uğurlu!",
@@ -191,22 +202,16 @@ const Reservation = () => {
                     <label htmlFor="time" className="text-body-sm text-foreground block mb-3">
                       Saat
                     </label>
-                    <select
+                    <input
+                      type="time"
                       id="time"
                       name="time"
                       value={formData.time}
                       onChange={handleChange}
                       className="w-full bg-transparent border border-primary/30 px-6 py-4 text-body text-foreground 
-                               focus:border-primary focus:outline-none transition-colors duration-300
-                               appearance-none cursor-pointer"
-                    >
-                      <option value="" disabled>Saat seçin</option>
-                      {timeSlots.map((slot) => (
-                        <option key={slot} value={slot} className="bg-background text-foreground">
-                          {slot}
-                        </option>
-                      ))}
-                    </select>
+                               focus:border-primary focus:outline-none transition-colors duration-300"
+                      placeholder="Saatı daxil edin"
+                    />
                   </div>
                 </div>
 

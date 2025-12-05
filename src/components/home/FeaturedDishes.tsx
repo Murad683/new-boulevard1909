@@ -2,24 +2,24 @@ import { useEffect, useRef, useState } from "react";
 
 const dishes = [
   {
-    name: "Qara Çay ilə Marine Edilmiş Quzu",
-    description: "Yumuşaq quzu əti, yerli otlar, mevsimlik tərəvəzlər",
-    price: "38 ₼",
+    name: "Şəki piti",
+    description: "",
+    price: "24 ₼",
   },
   {
-    name: "Xəzər Nərəsi",
-    description: "Təzə nərə, narşərab sousu, balqabaq püresi",
-    price: "52 ₼",
+    name: "Quzu boynu sobada",
+    description: "",
+    price: "64 ₼",
   },
   {
-    name: "Boulevard Plovü",
-    description: "Qazan plovü, qara kürü, sarımsaq aioli",
-    price: "42 ₼",
+    name: "Şüyüdlü, paxlalı plov quzu qolu ilə",
+    description: "",
+    price: "29 ₼",
   },
   {
-    name: "Şəkərbura Deser",
-    description: "Müasir şəkərbura, fındıq dondurması, bal sousu",
-    price: "18 ₼",
+    name: "Meysari Bulluri",
+    description: "Azerbaijan",
+    price: "16/70 ₼",
   },
 ];
 
@@ -77,9 +77,11 @@ const FeaturedDishes = () => {
                   <h3 className="text-heading-sm text-foreground mb-2">
                     {dish.name}
                   </h3>
-                  <p className="text-body text-muted-foreground">
-                    {dish.description}
-                  </p>
+                  {dish.description && (
+                    <p className="text-body text-muted-foreground">
+                      {dish.description}
+                    </p>
+                  )}
                 </div>
                 <span className="text-heading-sm text-primary">
                   {dish.price}

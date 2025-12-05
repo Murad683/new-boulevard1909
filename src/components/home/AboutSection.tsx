@@ -65,8 +65,8 @@ const AboutSection = () => {
             </p>
             <div className="flex items-center gap-12">
               <div>
-                <span className="text-heading-md text-primary block">2019</span>
-                <span className="text-body-sm text-muted-foreground">-dən bəri</span>
+                <span className="text-heading-md text-primary block">20+</span>
+                <span className="text-body-sm text-muted-foreground">-il təcrübə</span>
               </div>
               <div className="w-px h-12 bg-primary/30" />
               <div>
