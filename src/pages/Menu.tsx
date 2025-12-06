@@ -590,14 +590,10 @@ const Menu = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const scrollToCategory = (categoryId: string) => {
+  const handleCategorySelect = (categoryId: string) => {
     setActiveCategory(categoryId);
-    const element = document.getElementById(categoryId);
-    if (element) {
-      const offset = 150;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -702,7 +698,7 @@ const Menu = () => {
             {mainCategories.map((category) => (
               <li key={category.id}>
                 <button
-                  onClick={() => scrollToCategory(category.id)}
+                  onClick={() => handleCategorySelect(category.id)}
                   className={`text-body-sm px-5 py-3 rounded-full border border-primary/30 transition-colors duration-300 whitespace-nowrap ${
                     activeCategory === category.id
                       ? "bg-primary/15 text-primary border-primary"
@@ -720,13 +716,14 @@ const Menu = () => {
       {/* Menu Content */}
       <section ref={sectionRef} className="bg-background section-padding">
         <div className="container-narrow">
-          {mainCategories.map((category, categoryIndex) => {
-            const filteredSections = filterSections(category.sections);
+          {(() => {
+            const active = mainCategories.find((cat) => cat.id === activeCategory) ?? mainCategories[0];
+            const filteredSections = filterSections(active.sections);
 
             return (
-              <div key={category.id} id={category.id} className="mb-20 last:mb-0">
+              <div key={active.id} className="mb-20 last:mb-0">
                 <h3 className="text-heading-md text-foreground mb-10 text-center">
-                  {category.name}
+                  {active.name}
                 </h3>
                 <div className="gold-separator mb-10" />
 
@@ -746,10 +743,7 @@ const Menu = () => {
                           {section.columns.map((columnItems, columnIndex) => (
                             <div key={`${section.id}-col-${columnIndex}`} className="space-y-0">
                               {columnItems.map((item, itemIndex) =>
-                                renderItemRow(
-                                  item,
-                                  categoryIndex * 150 + sectionIndex * 80 + columnIndex * 40 + itemIndex * 40
-                                )
+                                renderItemRow(item, sectionIndex * 120 + columnIndex * 60 + itemIndex * 40)
                               )}
                             </div>
                           ))}
@@ -757,7 +751,7 @@ const Menu = () => {
                       ) : (
                         <div className="space-y-0">
                           {section.items?.map((item, itemIndex) =>
-                            renderItemRow(item, categoryIndex * 150 + sectionIndex * 80 + itemIndex * 40)
+                            renderItemRow(item, sectionIndex * 120 + itemIndex * 40)
                           )}
                         </div>
                       )}
@@ -766,7 +760,7 @@ const Menu = () => {
                 )}
               </div>
             );
-          })}
+          })()}
         </div>
         <p className="mt-16 text-center text-body text-muted-foreground">
           <span className="font-heading text-body-sm tracking-[0.25em] uppercase text-primary block mb-3">Qeyd</span>
