@@ -135,8 +135,7 @@ const Contact = () => {
               <div className="gold-separator mb-10 mx-0" />
               
               <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[500px] overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.2407866621775!2d49.8618!3d40.3716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDIyJzE3LjgiTiA0OcKwNTEnNDIuNSJF!5e0!3m2!1sen!2s!4v1234567890"
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2752.1546330465535!2d49.830985683015015!3d40.337246486881384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307f00779bad09%3A0x8c410e1ffe7372fd!2sRestaurant%20Boulevard!5e1!3m2!1saz!2saz!4v1765011362160!5m2!1saz!2saz"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -144,7 +143,7 @@ const Contact = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Boulevard 1909 Xəritə"
-                  className="grayscale"
+                  className="w-full h-full grayscale"
                 />
                 <div className="absolute inset-0 pointer-events-none border border-primary/20" />
               </div>
